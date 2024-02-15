@@ -23,7 +23,7 @@ import DraggablePlugin from "./plugins/DraggablePlugin";
 import ListMaxIndentLevelPlugin from "./plugins/ListMaxIndentLevelPlugin";
 import CodeHighlightPlugin from "./plugins/CodeHighlightPlugin";
 import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
-
+import TraceUserPlugin from "./plugins/TraceUserPlugin";
 function Placeholder() {
   return <div className="editor-placeholder">Enter some rich text...</div>;
 }
@@ -40,6 +40,8 @@ function ChangePlugin({ onChange }) {
 }
 
 export default function Editor() {
+  const parser = new DOMParser();
+  const dom = parser.parseFromString('<p class="editor-paragraph" dir="ltr"><span style="white-space: pre-wrap;">SubmitButton.jsx:11</span></p><p class="editor-paragraph" dir="ltr"><span style="white-space: pre-wrap;">null</span></p><p class="editor-paragraph" dir="ltr"><span style="white-space: pre-wrap;">null</span></p><p class="editor-paragraph" dir="ltr"><span style="white-space: pre-wrap;">null</span></p><p class="editor-paragraph" dir="ltr"><span style="white-space: pre-wrap;">null</span></p><p class="editor-paragraph" dir="ltr"><span style="white-space: pre-wrap;">null</span></p><p class="editor-paragraph" dir="ltr"><span style="white-space: pre-wrap;">null</span></p><p class="editor-paragraph" dir="ltr"><span style="white-space: pre-wrap;">null</span></p><p class="editor-paragraph" dir="ltr"><span style="white-space: pre-wrap;">null</span></p><p class="editor-paragraph" dir="ltr"><span style="white-space: pre-wrap;">null</span></p><p class="editor-paragraph" dir="ltr"><span style="white-space: pre-wrap;">null</span></p><p class="editor-paragraph" dir="ltr"><span style="white-space: pre-wrap;">null</span></p><p class="editor-paragraph" dir="ltr"><span style="white-space: pre-wrap;">null</span></p>', 'text/html');
   const [editorState, setEditorState] = useState();
   function handleEditorState(editorState) {
     setEditorState(editorState);
@@ -84,6 +86,7 @@ export default function Editor() {
             <CodeHighlightPlugin />
             <ListPlugin />
             <LinkPlugin />
+            <TraceUserPlugin />
             <DraggablePlugin />
             <AutoLinkPlugin />
             <TabIndentationPlugin />

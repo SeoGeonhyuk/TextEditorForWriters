@@ -15,7 +15,6 @@ export default function useDragListeners(){
             
             // Get HTML element by node "key"
             const htmlElement = editor.getElementByKey(key);
-
             if (!htmlElement) {
                console.warn('[useDragListeners] No html element');
                return;
@@ -23,7 +22,7 @@ export default function useDragListeners(){
 
             // TODO: JUST FOR VISUALIZATION! You can remove it!
             htmlElement.classList.add('draggable-block');
-
+            htmlElement.id = key;
             // event listeners will be added later ...
          });
       };
